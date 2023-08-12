@@ -16,7 +16,7 @@ body{
 }
 
 .container{
-    max-width: 80%;
+    max-width: 100%;
     border-radius: 30px;
     display: none;
     justify-content: center;
@@ -30,9 +30,6 @@ body{
     height: 50px;
     display: flex;
     justify-content:right;
-
-    
-
 }
 
 .exitButton{
@@ -41,7 +38,7 @@ body{
 
 }
 .menu{  
-    width: 50%;
+    width: 100%;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -276,7 +273,7 @@ li:hover, .button:hover{
     }
 
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 520px){
     li{
         width: 300px;        
     }
@@ -292,6 +289,43 @@ li:hover, .button:hover{
     li{
         width: 200px;        
     }
+}
+@media screen and (max-height: 760px) {
+    .score{
+        height: 20px;
+        padding: 0;
+    }
+    .content{
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+    li{
+        list-style: none;
+        margin-top: 33px;
+        background-color: rgb(253, 252, 252);
+        width: 200px;
+        height: 40px;
+        border-radius: 20px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 1px 1px 1px black;
+    }
+    .header-menu{
+        font-size: 20px;
+    }
+    #start{
+        font-size: 15px;
+        padding: 15px;
+    }
+    
 }
 
 
