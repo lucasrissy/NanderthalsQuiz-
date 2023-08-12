@@ -22,7 +22,13 @@ async function api() {
 
     data = await fetch(`https://opentdb.com/api.php?amount=10&difficulty=${choice}`)
         .then(response => response.json());
-    start(data);    
+    
+        if (!choice){
+            location.reload(); 
+        }else {
+            start(data);    
+        }
+            
 }
 
 
@@ -189,7 +195,7 @@ function showAnswer(data) {
            
             counterWrong++; 
 
-        }, 1000)
+        }, 2000)
     }
 
 }
@@ -200,7 +206,7 @@ function endGame(){
     document.querySelector(".show").style.backgroundColor = "#3B3B44"; 
     const newSpan = document.createElement("span"); 
     document.querySelector(".show").appendChild(newSpan); 
-    document.querySelector(".show span").textContent = `Nanderthals, your score is:  ${counterRights*factor}`; 
+    document.querySelector(".show span").textContent = `Nanderthal, your score is:  ${counterRights*factor}`; 
 
 }
 
