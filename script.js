@@ -1,5 +1,6 @@
 var flag = false;
 let choice = "";
+let userName = "";
 let counterWrong= 0; 
 let counterRights=0; 
 let maxAttempts=3; 
@@ -9,13 +10,17 @@ const audioGame = new Audio("resources/GameMusic.mp3");
 window.onload = (event) => {
     const selectedElement = document.querySelector("#myList")
     selectedElement.addEventListener("change", function(){
-        
         choice = selectedElement.options[selectedElement.selectedIndex].id;
         localStorage.setItem("userChoice", choice);
     })   
 }
 
 document.querySelector("#start").addEventListener("click", function(){
+    userName = document.querySelector("#name").value;
+    if(!userName || !choice){
+        window.alert("Please, provide your name and choose a level")
+        location.reload();
+    }
     document.querySelector(".menu").style.display = "none";
     const audioStart = new Audio("resources/StartGame.mp3");
     audioStart.play();
@@ -26,13 +31,8 @@ async function api() {
 
     data = await fetch(`https://opentdb.com/api.php?amount=10&difficulty=${choice}`)
         .then(response => response.json());
-      
-        if (!choice){
-            location.reload(); 
-        }else {
-            start(data);    
-        }
-            
+
+        start(data);    
 }
 
 
@@ -164,7 +164,7 @@ function showAnswer(data) {
         document.querySelector(".show").style.display = "flex"
         document.querySelector(".show").style.color = "#B8F1FE";  
         document.querySelector(".show").style.backgroundColor = "#3B3B44"; 
-        document.querySelector(".show").textContent ="The Correct Answer: "
+        document.querySelector(".show").textContent ="Correct Answer: "
                                                         + data.results[0].correct_answer;
         setTimeout(function () {
             document.querySelector("body").innerHTML = `<div class="show"></div>
@@ -215,12 +215,14 @@ function endGame(){
     document.querySelector(".show").style.display = "flex";
     document.querySelector(".show").style.backgroundColor = "#3B3B44"; 
 
+ 
+
     const newSpan = document.createElement("span"); 
     document.querySelector(".show").appendChild(newSpan); 
-    document.querySelector(".show span").textContent = `Nanderthal, your score is:  ${counterRights*factor}`; 
+    document.querySelector(".show span").textContent = `${userName}, your score is:  ${counterRights*factor}`; 
 
     document.querySelector(".show").innerHTML=`
-                                                <span>Nanderthal, your score is:  ${counterRights*factor}</span>
+                                                <span>${userName}, your score is:  ${counterRights*factor}</span>
                                                 <div class="center">
                                                     <button onclick="exit()">Reset</button>
                                                 </div>
