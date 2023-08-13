@@ -21,7 +21,7 @@ document.querySelector("#start").addEventListener("click", function(){
         window.alert("Please, provide your name and choose a level")
         location.reload();
     }
-    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".menu-container").style.display = "none";
     const audioStart = new Audio("resources/StartGame.mp3");
     audioStart.play();
     api()
@@ -127,30 +127,32 @@ function showAnswer(data) {
         document.querySelector(".show").textContent = "You got it right!";
         setTimeout(function () {
     
-            document.querySelector("body").innerHTML = `<div class="show"></div>
-            <div class="container">
-                <div class="exitContainer">
-                    <div class="exit">
-                        <input class="exitButton" type="image" src="resources/exit.png" alt="Exit Button" onclick="exit()">
+            document.querySelector("body").innerHTML = `
+                <div class="app-container">
+                    <div class="show"></div>
+                    <div class="container">
+                        <div class="exitContainer">
+                            <div class="exit">
+                                <input class="exitButton" type="image" src="resources/exit.png" alt="Exit Button" onclick="exit()">
+                            </div>
+                        </div>
+                        <div class="header-questions">
+                        
+                        </div> 
+                        <div class="query">
+                        
+                        </div>
+                        <div class="content">
+                            <ul class="list">
+                            
+                            </ul>
+                        </div>
+                        <div class="scoreContainer">
+                        <div class="score">
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="header-questions">
-                   
-                </div> 
-                <div class="query">
-                
-                </div>
-                <div class="content">
-                    <ul class="list">
-                       
-                    </ul>
-                </div>
-                <div class="scoreContainer">
-                <div class="score">
-                    
-                </div>
-            </div>
-            </div> `
+                </div>`
 
             counterRights++;   
             audioGame.pause()
@@ -167,31 +169,32 @@ function showAnswer(data) {
         document.querySelector(".show").textContent ="Correct Answer: "
                                                         + data.results[0].correct_answer;
         setTimeout(function () {
-            document.querySelector("body").innerHTML = `<div class="show"></div>
-            <div class="container">
-
-            <div class="exitContainer">
-                <div class="exit">
-                    <input class="exitButton" type="image" src="resources/exit.png" alt="Exit Button" onclick="exit()">
-                </div>
-            </div>
-                <div class="header-questions">
-                   
-                </div> 
-                <div class="query">
-                
-                </div>
-                <div class="content">
-                    <ul class="list">
-                       
-                    </ul>
-                </div>
-                <div class="scoreContainer">
-                <div class="score">
-                    
-                </div>
-            </div>
-            </div> `
+            document.querySelector("body").innerHTML = `
+                <div class="app-container">
+                    <div class="show"></div>
+                    <div class="container">
+                        <div class="exitContainer">
+                            <div class="exit">
+                                <input class="exitButton" type="image" src="resources/exit.png" alt="Exit Button" onclick="exit()">
+                            </div>
+                        </div>
+                        <div class="header-questions">
+                        
+                        </div> 
+                        <div class="query">
+                        
+                        </div>
+                        <div class="content">
+                            <ul class="list">
+                            
+                            </ul>
+                        </div>
+                        <div class="scoreContainer">
+                        <div class="score">
+                            
+                        </div>
+                    </div>
+                </div>`
 
             
             if(counterWrong == maxAttempts){
