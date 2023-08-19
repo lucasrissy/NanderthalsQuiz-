@@ -8,6 +8,7 @@ let factor = 5;
 const audioGame = new Audio("resources/GameMusic.mp3");
 
 window.onload = (event) => {
+    animateBlocks()
     const selectedElement = document.querySelector("#myList")
     selectedElement.addEventListener("change", function(){
         choice = selectedElement.options[selectedElement.selectedIndex].id;
@@ -233,6 +234,32 @@ function exit() {
     location.reload(); 
 }
 
+const container = document.querySelector(".menu")
+for (var i = 0;i <= 100; i++){
+   const blocks = document.createElement('div');
+   blocks.classList.add('block');
+   container.appendChild(blocks);
+
+}   
+
+function animateBlocks(){
+   anime({
+       targets: '.block',
+       translateX: function(){
+           return anime.random(-700, 700)
+       }, 
+       translateY: function(){
+           return anime.random(-500, 500)
+       }, 
+       scale: function(){
+           return anime.random(1, 5)
+       },
+       easing: 'linear',
+       duration: 3000,
+       delay:anime.stagger(10),
+       complete: animateBlocks
+   })
+}
 
 
 

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Press+Start+2P&display=swap');
 *{
     padding: 0%;
     margin: 0;
@@ -12,50 +11,102 @@ body{
     align-items: center;
     justify-content: center; 
     height: 100vh;
+    width: 100vw;
     background-color: #25252b;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 .container{
+    position: relative;
     width: 600px;
-    border-radius: 30px;
     display: none;
     justify-content: center;
     flex-direction: column;
-    background-color: #3b3b44;
+    background: repeating-conic-gradient(from var(--a), #ff2770 0%, #ff2770 5%, 
+    transparent 5%, transparent 35%, #ff2770 50%);
+    animation: backgroundAnimate 4s linear infinite;
     box-shadow: 1px 2px 10px white;
+  
+}
+.container::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(from var(--a), #4C004A 0%, #4C004A 5%, 
+    transparent 5%, transparent 35%, #4C004A 50%);
+    animation: backgroundAnimate 4s linear infinite;
+    box-shadow: 1px 2px 10px white;
+    animation-delay: -1s;
+ 
+}
+@property  --a
+{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@keyframes backgroundAnimate{
+    0%
+    {
+        --a: 0deg;
+    }
+    100%
+    {
+        --a: 360deg;
+    }
+}
+.container:after{
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background-color: #3B3B44;
 }
 
 .exitContainer{
-    inherits: width;
     height: 50px;
     display: flex;
     justify-content:right;
+    z-index: 1;
 }
 
 .exitButton{
     width: 50px;
     height: 50px;
-
+    margin-right: 10px;
+    margin-top: 10px;
 }
-.menu{ 
+.menu{
+    position: relative; 
     height: 100vh; 
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
     gap: 25px;
     align-items: center;
-    background-image: url(resources/quiz.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     box-shadow: 1px 2px 10px white;
     text-align: center;
 }
 
+.menu h1{
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: 80px;
+}
+.block{
+    position: absolute;
+    width: 50px;
+    height: 100px;
+    background: #4C004A;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
 
-input{
+
+.menu input{
+    font-family: 'Press Start 2P', cursive;
     height: 50px;
-    width: 24%;
     border-radius: 10px;
     box-shadow: 2px 2px #95bff0;
     border: none; 
@@ -82,23 +133,25 @@ input::placeholder{
     height: 60px;
     margin-top: 30px;
     width: inherit;
-    color: #FC7F3E; 
-   
+    color: #95bff0;
+   z-index: 1;
 }
 
 #myList{
+    font-family: 'Press Start 2P', cursive;
     background-color: #B8F1FE;
     border: none;
     height: 50px;
-    width: 24%;
+    width: 245px;
     border-radius: 10px;
     box-shadow: 2px 2px #95bff0;
     text-align: center;
     cursor: pointer;
     font-size: 12px;
 }
-#myList:hover, input:hover {
+#myList:hover, .menu input:hover{
     background-color:#FFB64F;
+    color: #fff;
 }
 /* .header:hover{
     height: 150px;
@@ -110,7 +163,7 @@ input::placeholder{
     padding: 16px;
     background-color: #FE3400;
     height: 50px;
-    width: 24%;
+    width: 245px;
     font-size: 12px;
     text-transform: uppercase;
     text-align: center;
@@ -137,14 +190,15 @@ input::placeholder{
     padding: 10px;
     text-align: center;
     height: 100px;
+    z-index: 1;
 }
 
 .content{
     display: flex; 
     height: 400px;
     justify-content: center;
-   background-color: #3b3b44;
    border-radius: 10px;
+   z-index: 100000;
 }
 
 ul{
@@ -172,10 +226,12 @@ li:hover, .button:hover{
     background-color: #E58130;
     color: #3B3B44; 
 }
+
 .container .scoreContainer{
     display: flex;
     justify-content: end;
     align-items: center;
+   
 }
 .score{
     color:#25252b;
@@ -274,6 +330,8 @@ li:hover, .button:hover{
     background-repeat: no-repeat;
     animation: animate 4s linear infinite;
 }
+
+
 @keyframes animate
 {
     /* 0%,10%
@@ -329,6 +387,10 @@ li:hover, .button:hover{
         font-size: 15px;
         padding: 15px;
     }
+    .exitButton{
+        width: 30px;
+        height: 30px;
+    }
 }
 
 
@@ -348,6 +410,10 @@ li:hover, .button:hover{
     #start{
         font-size: 15px;
         padding: 15px;
+    }
+    .exitButton{
+        width: 30px;
+        height: 30px;
     }
 }
 
