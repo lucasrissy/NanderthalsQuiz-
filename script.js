@@ -173,7 +173,7 @@ function showAnswer(data) {
 
             <div class="exitContainer">
                 <div class="exit">
-                    <input class="exitButton" type="image" src="resources/exit.png" alt="Exit Button" onclick="exit()">
+                    <input class="exitButton" type="image" src="resources/cancel.png" alt="Exit Button" onclick="exit()">
                 </div>
             </div>
                 <div class="header-questions">
