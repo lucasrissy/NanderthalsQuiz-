@@ -334,20 +334,7 @@ li:hover, .button:hover{
 
 @keyframes animate
 {
-    /* 0%,10%
-    {
-        scale: 1;
-        rotate: 0deg;
-        translate: 0 0;
-        transform-origin: center;
-    } */
-    /* 20%,30%
-    {
-        scale: 0,5;
-        rotate: 360deg;
-        translate: 1500px 0;
-        transform-origin: 1000px;;
-    } */
+    
     40%
     {
         scale: 0,5;
